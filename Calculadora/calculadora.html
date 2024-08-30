@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulador com gasto de sensores!</h1>
+    Quantidade de Tonéis em sua Vinícola:
+    <input type="number" id="input_toneis">
+    <br>Qual a quantidade de medidores de temperatura que você utiliza no momento?
+    <input type="number" id="input_medidor_temp">
+    <br>Quantos medidores de concetração de álcool você tem no momento?
+    <input type="number" id="input_medidor_alc">
+    <br><br><button onclick="Resultado()">Descobrir quanto posso economizar </button>
+    <br><div id="div_resultado"></div>
+
+</body>
+</html>
+<script>
+        function Resultado(){ 
+            
+            const tonel = Number(input_toneis.value)
+            const medidorTemperatura = Number(input_medidor_temp.value)
+            const medidorAlcool = Number(input_medidor_alc.value)
+
+            var vlrTemp = Number(input_medidor_temp.value) * 700
+            var vlrAlc = Number(input_medidor_alc.value) * 25000
+            const custoAtual = vlrTemp + vlrAlc
+
+            const vlrSensorGas = 18
+            const vlrSensorTemp = 20
+
+            var novoVlrTemp = tonel * vlrSensorTemp
+            var novoVlrAlc = tonel * vlrSensorGas
+
+            var novoValorTotal = novoVlrAlc + novoVlrTemp
+            var lucro = custoAtual - novoValorTotal
+
+            div_resultado.innerHTML= 
+
+            `<br>O seu custo no momento  com sensores de medição de alcool é de R$${vlrAlc}.
+            <br>Você também tem o custo de R$${vlrTemp} com medidores de  temperatura.
+            <br>Ao todo você gasta R$${custoAtual} apenas com medidores.
+            <br>
+            <br> Conosco você pode gasta apenas R$${novoVlrTemp} com medidores de temperatura e R$${novoVlrAlc} com sensores de Alcool
+            <br> Sua empresa irá deixar de gastar R$${lucro}
+            <br>
+            <br>
+            <br> Entre em contato conosco para fazermos uma visita.
+            <br> E-mail: grupo12vinho@vinhos.com` 
+
+
+            
+
+            
+
+
+
+
+
+
+
+}
+
+</script>
