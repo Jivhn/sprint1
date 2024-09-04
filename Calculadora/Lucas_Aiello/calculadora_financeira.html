@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Financeira Wynn</title>
 </head>
+
 <body>
     <h1>Calculadora Financeira Wynn</h1>
     <p>Preencha os seguintes dados para descobrir como a nossa solução agregará à sua empresa!</p>
-    1) Quantos litros de vinho a sua vinícola produz mensalmente? <input type="number" id="input_litros_mensal"><br>
-    2) Quanto é o valor de venda para cada litro produzido? <input type="number" id="input_valor_venda_litro"><br>
-    3) Quanto é o custo estimado para produzir cada litro? <input type="number" id="input_custo_litro"><br>
-    4) Quantidade de Tonéis: <input type="number" id="input_qtd_tonel"><br>
-    5) Tipo de vinho produzido (ex: Tinto Seco): <input type="text" id="input_tipo_vinho"><br>
-    6) Sua vinícola já possui algum tipo de sistema para o monitoramento do processo de fermentação (sim ou não)? <input type="text" id="input_possui_sistema"><br>
-    7) Caso a respota acima seja "sim", qual é o valor pago para esse sistema? <input type="number" id="input_valor_sistema"><br>
+    1) Quantos litros de vinho são produzidos em sua vinícola mensalmente?
+    <input type="number" id="input_qtd_litros"><br>
+    2) Quantos tonéis existem em sua vinícola? 
+    <input type="number" id="input_qtd_toneis"><br>
+    3) Qual é o volume de cada garrafa de vinho fabricada (em ml, ex: 750)?
+    <input type="number" id="input_volume_garrafa"><br>
     <br>
     <button onclick="calcularMostrarLucratividade()"><strong>Calcular lucratividade</strong></button>
     <div id="mostrar_lucratividade"></div>
 </body>
+
 </html>
 
 <script>
-    function calcularMostrarLucratividade(){
-        const litros_mensal = Number(input_litros_mensal.value)
-        const valor_venda_litro = Number(input_valor_venda_litro.value)
-        const custo_litro = Number(input_custo_litro.value)
-        const qtd_tonel = Number(input_qtd_tonel.value)
-        const tipo_vinho = input_tipo_vinho.value
-        const possui_sistema = input_possui_sistema.value
-        const valor_sistema = Number(input_valor_sistema.value)
-        
-        // Custos e Lucratividade
-        const custo_mensal_producao = custo_litro*litros_mensal
-        const lucratividade_mensal = ((valor_venda_litro-custo_litro)/custo_litro)*100
+    function calcularMostrarLucratividade() {
+        // Obtendo valores do Input
+        const qtd_litros = Number(input_qtd_litros.value)
+        const qtd_tonel = Number(input_qtd_toneis.value)
+        const volume_garrafa_em_litros = Number(input_volume_garrafa.value)/1000
 
-        // Custo de equipamentos e instalação
+        // Custo de equipamentos e instalação, apenas para calculos posteriores
         const valor_MQ2 = 15
         const valor_LM35 = 15
         const valor_Arduino_Uno = 40
         const valor_cabos = 30
         const valor_montagem = 35
-        const valor_equipamentos = valor_MQ2+valor_LM35+valor_Arduino_Uno+valor_cabos+valor_montagem
+        const valor_equipamentos = valor_MQ2 + valor_LM35 + valor_Arduino_Uno + valor_cabos + valor_montagem
 
         const valor_instalacao = 250
-        const valor_inplementação_por_tonel = valor_equipamentos+valor_instalacao
+        const valor_inplementação_por_tonel = valor_equipamentos + valor_instalacao
 
-        const valor_total_solucao = valor_inplementação_por_tonel*qtd_tonel
-        
-        // Redução de desperdícios
-        const desperdicio = custo_mensal_producao-(custo_mensal_producao*0.075)
+        const valor_total_solucao = valor_inplementação_por_tonel * qtd_tonel
+
+        // Desperdicio
+        const litros_desperdicicados = qtd_litros*0.07
+        const garrafas_desperdicadas = litros_desperdicicados/volume_garrafa_em_litros       
 
         mostrar_lucratividade.innerHTML = `
-        Baseado nos dados informados e em nossas pesquisas, entendemos que: <br>
-        Sua lucratividade mensal é de aproximadamente ${lucratividade_mensal}% <br>
-        Seu custo mensal é de aproximadamente ${custo_mensal_producao} <br>
-
-        
+        <br>
+        <strong>RESULTADOS</strong>
+        <br>
+        Baseado nos dados informados e em nossas pesquisas, afirmamos que, mensalmente, <strong>são perdidos de 5% a 10%</strong> do volume produzido nas vinícolas do Brasil.
+        <br>
+        Através da nossa solução, <strong>você produzirá ${parseInt(garrafas_desperdicadas)} garrafas além da sua produção atual</strong>, o que representa um total de <strong>${litros_desperdicicados.toFixed(1)} litros não desperdiçados mensalmente!</strong> O que equivale a <strong>${parseInt(garrafas_desperdicadas*12)} garrafas anualmente.</strong>      
+        <br><br>
+        <strong>BIBLIOGRAFIA</strong>
+        <br>
+        https://www.chr-hansen.com/pt/food-cultures-and-enzymes/fermented-beverages/cards/article-cards/avoid-producing-off-flavors
         `
     }
 </script>
