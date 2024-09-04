@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira - Wynn</title>
+</head>
+<body>
+    <!-- A calculadora financeira vai consistir em pedir a produção anual de vinho do cliente, a média de preço em que ele vende -->
+
+
+    <h1>Simule sem compromisso e obtenha a fórmula para aumentar o lucro da sua vinicola!</h1>
+
+    <h2>Como utilizar o simulador?</h2>
+
+    <p>Forneca os dados da sua produção anual de vinho e da sua média de preço, e com base na nossa simulação, apresentaremos um sistema para melhorar o seu lucro!</p>
+
+
+    Qual a sua produção bruta anualmente?<br>
+    <input type="text" id="input_producao"><br><br>
+
+
+
+    Qual a média de preço em que o seu vinho é vendido?<br>
+    <input type="text" id="input_media_preco"><br><br><br>
+
+<button onclick="calculadoraFinanceira()">Simule Já!</button><br><br><br>
+
+<hr>
+
+    <div id="resposta"></div>
+
+</body>
+</html>
+
+<script>
+    function calculadoraFinanceira(){
+        const prod = Number(input_producao.value)
+        const precoMedio = Number(input_media_preco.value)
+
+        
+        var prejuizo = prod* 0.10  
+         var numGarrafa = prejuizo / 0.750
+
+         const prejuizoFinanceiro = prejuizo*precoMedio
+
+         resposta.innerHTML = `<p>Com base nos estudos da Chr. Hansen, um descontrole no processo de fermentação do vinho pode causar<br> um prejuízo de em média 10% em relação a sua produção,<br> com base na sua produção, isso equivale á ${numGarrafa.toFixed(0)} garrafas de vinho e R$ ${prejuizoFinanceiro.toFixed(2)} financeiramente</p>
+            
+            <p>Com esse contexto, apresentamos a solução para o seu problema! Com um sistema<br> de monitoramento de temperatura e gases, que permitirá um maior controle no<br> processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso! </p>
+            `
+    }
+</script>
