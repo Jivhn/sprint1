@@ -1,0 +1,96 @@
+* {
+    font-family:'Darker Grotesque';
+    font-size: 22px;
+}
+
+body {
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+/* Calculadora */
+/* NavBar */
+
+#navBar {
+    /* background-color: green; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80vw;
+    height: 30vh;
+    list-style: none;
+    align-items: center;
+}
+
+#navBar li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 20%;
+}
+
+#navBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#navBar a {
+    text-decoration: none;
+    font-size: 50px;
+    font-weight: 500;
+    color: black;
+}
+
+#navBar ul li {
+    margin-right: 20px;
+}
+
+#navBar ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #C3C3C3;
+    border-radius: 5px;
+    display: block;
+}
+
+#navBar ul #ulHome {
+    display: relative;
+    padding-left: 10vw;
+    padding-right: 5vw;
+    padding-bottom: 5vw;
+    background-color: green;
+}
+
+/* #navBar ul #ulCalculadora {
+    margin-right: 20vw;
+} */
+
+/* Calculadora Box */
+
+#calculadora {
+    display: flex;
+    width: 80vw;
+    height: 60vh;
+    background-color: red;
+    justify-content: end;
+}
+
+#box {
+    /* display: flex; */
+    height: 55vh;
+    width: 35vw;
+    background-color: blue;
+}
