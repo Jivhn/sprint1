@@ -17,17 +17,19 @@
 
 
     Qual a sua produção bruta anualmente?<br>
-    <input type="text" id="input_producao"><br><br>
+    <input type="number" id="input_producao"><br><br>
 
 
 
     Qual a média de preço em que o seu vinho é vendido?<br>
-    <input type="text" id="input_media_preco"><br><br><br>
+    <input type="number" id="input_media_preco"><br><br><br>
+    Qual a média de tamanho da garrafa de vinho que você vende?(ML)<br>
+    <input type="number" id="input_tamanhoGarrafa"><br><br><br>
 
 <button onclick="calculadoraFinanceira()">Simule Já!</button><br><br><br>
 
 <hr>
-
+    
     <div id="resposta"></div>
 
 </body>
@@ -37,16 +39,30 @@
     function calculadoraFinanceira(){
         const prod = Number(input_producao.value)
         const precoMedio = Number(input_media_preco.value)
-
+        const tamGarrafa = Number(input_tamanhoGarrafa.value)/1000
         
         var prejuizo = prod* 0.10  
-         var numGarrafa = prejuizo / 0.750
+         var numGarrafa = prejuizo / tamGarrafa
+        
+        var faturamentoDesvalorizado = numGarrafa*precoMedio
 
-         const prejuizoFinanceiro = prejuizo*precoMedio
+         if(prod == ''){
+            resposta.innerHTML = `Preencha o Formulário para obter a sua resposta!`
+        }else if(precoMedio ==''){
+             resposta.innerHTML = `Preencha o Formulário para obter a sua resposta!`
+            }else if (tamGarrafa == ''){
+             resposta.innerHTML = `Preencha o Formulário para obter a sua resposta!`
+         }else{
 
-         resposta.innerHTML = `<p>Com base nos estudos da Chr. Hansen, um descontrole no processo de fermentação do vinho pode causar<br> um prejuízo de em média 10% em relação a sua produção,<br> com base na sua produção, isso equivale á ${numGarrafa.toFixed(0)} garrafas de vinho e R$ ${prejuizoFinanceiro.toFixed(2)} financeiramente</p>
-            
-            <p>Com esse contexto, apresentamos a solução para o seu problema! Com um sistema<br> de monitoramento de temperatura e gases, que permitirá um maior controle no<br> processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso! </p>
-            `
+             resposta.innerHTML = `<p>Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
+                devido a desvios que surgem durante a fermentação alcoólica ou a fermentação malolática.<br> Isso significa que, para uma vinícola,
+                 5 a 10% de sua produção não será vendida ao preço ideal,<br> isso equivale á ${prod.toFixed(2)} Litros de vinhos, 
+                 o que é equivalente a ${numGarrafa.toFixed(0)} garrafas de vinho de ${(tamGarrafa*1000)} ML ou ${tamGarrafa.toFixed(2)}
+                  Litros que sao vendidos abaixo do preço.<br> O que significa que nessas garrafas o seu faturamento pode ser 
+                  maior que os R$${faturamentoDesvalorizado.toFixed(2)} que voce esta faturando atualmente</p>
+             
+             <p><h2>Com esse contexto, apresentamos a solução para o seu problema!</h2><br> Com um sistema de monitoramento de temperatura e gases, que permitirá um maior controle no<br> processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso! </p>
+             `
+        }
     }
 </script>
