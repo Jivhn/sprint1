@@ -35,13 +35,11 @@ void loop() {
   Serial.print(" -> Convetido em porcentagem: ");
   Serial.print(porcentagem_gas);
   Serial.println("%");
-  // Valor informado pelo MQ@: 110 -> Convertido em porcentagem: 30%
-  
   Serial.print("Temperatura informada pelo LM35: ");
   Serial.print(valor_LM35);
   Serial.println("°C");
 
-  // Determinando que o Loop ocorerrá a cada 1 segundo
+  // Determinando o tempo do loop
   delay(1000); 
 }
 
