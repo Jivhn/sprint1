@@ -10,10 +10,10 @@
 <body>
     <h1>Calculadora Financeira Wynn</h1>
     <p>Preencha os seguintes dados para descobrir como a nossa solução agregará à sua empresa!</p>
-    1) Quantos litros de vinho são produzidos em sua vinícola mensalmente?
+    1) Digite o nome da sua empresa:
+    <input type="text" id="input_nome_empresa"><br>
+    2) Quantos litros de vinho são produzidos em sua vinícola mensalmente?
     <input type="number" id="input_qtd_litros"><br>
-    2) Quantos tonéis existem em sua vinícola? 
-    <input type="number" id="input_qtd_toneis"><br>
     3) Qual é o volume de cada garrafa de vinho fabricada (em ml, ex: 750)?
     <input type="number" id="input_volume_garrafa"><br>
     <br>
@@ -26,34 +26,21 @@
 <script>
     function calcularMostrarLucratividade() {
         // Obtendo valores do Input
+        const nome_empresa = input_nome_empresa.value
         const qtd_litros = Number(input_qtd_litros.value)
-        const qtd_tonel = Number(input_qtd_toneis.value)
-        const volume_garrafa_em_litros = Number(input_volume_garrafa.value)/1000
+        const volume_garrafa_em_litros = Number(input_volume_garrafa.value) / 1000
 
-        // Custo de equipamentos e instalação, apenas para calculos posteriores
-        const valor_MQ2 = 15
-        const valor_LM35 = 15
-        const valor_Arduino_Uno = 40
-        const valor_cabos = 30
-        const valor_montagem = 35
-        const valor_equipamentos = valor_MQ2 + valor_LM35 + valor_Arduino_Uno + valor_cabos + valor_montagem
-
-        const valor_instalacao = 250
-        const valor_inplementação_por_tonel = valor_equipamentos + valor_instalacao
-
-        const valor_total_solucao = valor_inplementação_por_tonel * qtd_tonel
-
-        // Desperdicio
-        const litros_desperdicicados = qtd_litros*0.07
-        const garrafas_desperdicadas = litros_desperdicicados/volume_garrafa_em_litros       
+        // Perdas
+        const litros_depreciados = qtd_litros * 0.07
+        const garrafas_depreciadas = litros_depreciados / volume_garrafa_em_litros
 
         mostrar_lucratividade.innerHTML = `
         <br>
         <strong>RESULTADOS</strong>
         <br>
-        Baseado nos dados informados e em nossas pesquisas, afirmamos que, mensalmente, <strong>são perdidos de 5% a 10%</strong> do volume produzido nas vinícolas do Brasil.
-        <br>
-        Através da nossa solução, <strong>você produzirá ${parseInt(garrafas_desperdicadas)} garrafas além da sua produção atual</strong>, o que representa um total de <strong>${litros_desperdicicados.toFixed(1)} litros não desperdiçados mensalmente!</strong> O que equivale a <strong>${parseInt(garrafas_desperdicadas*12)} garrafas anualmente.</strong>      
+        Baseado nos dados informados e em nossas pesquisas, afirmamos que, <strong>5 a 10% da produção de vinho perdem seu valor</strong> todos os anos, devido a desvios que surgem durante o processo de fermentação alcoólica.
+        <br><br>
+        ${nome_empresa.toUpperCase()}, através da nossa solução, você fará com que, <strong>mensalmente, ${parseInt(garrafas_depreciadas)} garrafas não sejam vendidas a baixo do preço de mercado</strong>, o que representa aproximadamente <strong>${litros_depreciados.toFixed(1)} litros que agora serão vendidos pelo preço ideal!</strong> E ainda garantimos uma maior padronização na qualidade dos vinhos!
         <br><br>
         <strong>BIBLIOGRAFIA</strong>
         <br>
