@@ -15,7 +15,9 @@ void loop() {
   valor_LM35 = analogRead(sensor_LM35); // Atribuindo os valores do sensor de Temperatura
 
   // Convertendo os valores do sensor de Gás para porcentagem
-  float porcentagem_gas = valor_MQ2/10000;
+    float porcentagem_gas = ((float)(valor_MQ2 - min) / (max - min)) * 100;
+
+  float temperaturaCelsius = (valor_LM35 * 5.0 / 1023.0) / 0.01;
 
   // Verificando se o sensor MQ2 está funcionando corretamente
   if (porcentagem_gas < 0) {
@@ -25,21 +27,24 @@ void loop() {
   }
 
   // Verificando se o sensor LM35 está funcionando corretamente
-  if (valor_LM35 < 0){
-    valor_M35 = 0
+  if (temperaturaCelsius < 0){
+    temperaturaCelsius = 0;
   }
 
   // Exibindo valores no Monitor Serial
+  Serial.println("");
   Serial.print("Valor informado pelo MQ2: ");
   Serial.print(valor_MQ2);
   Serial.print(" -> Convetido em porcentagem: ");
   Serial.print(porcentagem_gas);
   Serial.println("%");
-  Serial.print("Temperatura informada pelo LM35: ");
+  Serial.print("Valor informado pelo LM35: ");
   Serial.print(valor_LM35);
+  Serial.print(" -> Convetido em Graus Celsius: ");
+  Serial.print(temperaturaCelsius);
   Serial.println("°C");
 
   // Determinando o tempo do loop
-  delay(1000); 
+  delay(2000); 
 }
 
