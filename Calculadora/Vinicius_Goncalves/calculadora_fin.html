@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - Wynn</title>
+</head>
+<body>
+
+    <h1>Simulador Financeiro - Wynn</h1>
+
+    <hr>
+
+    <h3>Forneça as informações solicitadas para verificar a margem de lucro para a sua vinícola!</h3><br>
+
+    Informe a quantidade de litros produzidos mensalmente:<br>
+    <input type="number" id="input_producao"><br>
+
+    Qual o preço médio por litro de vinho vendido?<br>
+    <input type="number" id="input_valor"><br>
+
+    <button onclick="calcularlucro()">Calcular Lucro</button>
+
+    <hr>
+
+    <div id="retornoLucro"></div>
+</body>
+</html>
+
+<script>
+    function calcularlucro(){
+        const producao = Number(input_producao.value)
+        const preco = Number(input_valor.value)
+
+        const faturamento = producao * preco
+        const desperdicio1 = faturamento * 0.1
+        const despercicio2 = faturamento * 0.05
+        const lucro1 = desperdicio1 * 0.90
+        const lucro2 = despercicio2 * 0.95
+
+        retornoLucro.innerHTML=`
+        <b>Resultados</b><br>
+        Com base em nossas pesquisas cerca de 5 a 10% do vinho que é produzido perde o seu valor final no processo de fermentação.<br>
+        Sua faixa de perda é de R$${despercicio2.toFixed(2)} a R${desperdicio1.toFixed(2)}.<br>
+        Contratando os nossos serviços você podemos reduzir as suas perdas de R$${lucro2.toFixed(2)} em até R$${lucro1.toFixed(2)}.<br>
+        <hr>
+        <b>Fonte:</b> https://www.chr-hansen.com/pt/food-cultures-and-enzymes/fermented-beverages/cards/article-cards/avoid-producing-off-flavors
+        `
+    }
+</script>
