@@ -16,8 +16,9 @@ void loop() {
 
   // Convertendo os valores do sensor de Gás para porcentagem
     float porcentagem_gas = ((float)(valor_MQ2 - min) / (max - min)) * 100;
-
-  float temperaturaCelsius = (valor_LM35 * 5.0 / 1023.0) / 0.01;
+    
+  // Convertendo os valores do sensor de Temperatura para graus celsius
+    float temperaturaCelsius = (valor_LM35 * 5.0 / 1023.0) / 0.01;
 
   // Verificando se o sensor MQ2 está funcionando corretamente
   if (porcentagem_gas < 0) {

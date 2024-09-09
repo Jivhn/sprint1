@@ -23,16 +23,19 @@ CREATE TABLE usuario_PF(
 
 CREATE TABLE sensores(
 	idSensor INT PRIMARY KEY AUTO_INCREMENT,
-    idEmpresa INT,
     tipo varchar(4)
 );
 
 CREATE TABLE microcontroladores(
 	idMicrocontrolador INT PRIMARY KEY,
+    statusMic varchar(10),
+    CONSTRAINT chk_statuesMic
+    CHECK (statusMic IN('Ativio','Inativo'))
 );
 
 CREATE TABLE tonel(
 	idTonel INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT,
     idMicrocontrolador INT NOT NULL,
     idSensor1 INT NOT NULL,
     idSensor2 INT NOT NULL
