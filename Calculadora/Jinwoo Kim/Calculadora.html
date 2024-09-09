@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+<body style="background-color: bisque;">
+    <center>
+   <h1>Simulação de benefício</h1>
+   
+   <h2>Informe a quantidade de vinho que é produzido anualmente (em litros):</h2>
+   <input type="number" id="producao">
+
+   <h2>Informe a quantidade de vinho que é desperdiçado anualmente (em litros):</h2>
+   <input type="number" id="desperdicio">
+
+   <h2>Informe o preço que é cobrado por garrafa (750ml)</h2>
+   <input type="number" id="preco">
+
+   <br>
+   <br>
+   <button onclick="simularPerda()">Simular perda anual</button>
+   <br>
+   <br>
+   <div id="vamoLa"></div>
+</center>
+</body>
+</html>
+
+<script>
+    function simularPerda(){
+        var p = Number(producao.value)
+        var d = Number(desperdicio.value)
+        var pr = Number(preco.value)
+
+        var rendimentoAnual = p / 0.75 * pr
+        var desperdicioAnual = d / 0.75 * pr 
+        var diferencaRendimento = rendimentoAnual - desperdicioAnual
+        var prejuizo = rendimentoAnual - diferencaRendimento
+
+        vamoLa.innerHTML = 
+        `Puxa vida! De R$${Math.ceil(rendimentoAnual)} que deveria estar rendendo anualmente, 
+        <br>
+        sua vinícola está rendendo R$${Math.ceil(diferencaRendimento)}.. 
+        <br>
+        Prejuízo de R$${prejuizo}.
+        <br><br>
+        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de R$${prejuizo}!!`
+    }
+</script>
