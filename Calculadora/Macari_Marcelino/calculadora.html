@@ -7,60 +7,41 @@
 </head>
 <body>
     <h1>Simulador com gasto de sensores!</h1>
-    Quantidade de Tonéis em sua Vinícola:
-    <input type="number" id="input_toneis">
-    <br>Qual a quantidade de medidores de temperatura que você utiliza no momento?
-    <input type="number" id="input_medidor_temp">
-    <br>Quantos medidores de concetração de álcool você tem no momento?
-    <input type="number" id="input_medidor_alc">
-    <br><br><button onclick="Resultado()">Descobrir quanto posso economizar </button>
+    Nome da Vinícola:
+    <input type="text" id="input_nome">
+    <br>Quantidade de litros de vinhos vendidos anualmente:
+    <input type="number" id="input_anual">
+    <br>Preço médio da garrafa de vinho:
+    <input type="number" id="input_preço_medio">
+    <br><br><button onclick="Calcular()">Calcular ganho</button>
     <br><div id="div_resultado"></div>
 
 </body>
 </html>
 <script>
-        function Resultado(){ 
+        function Calcular(){ 
+            const nome = input_nome.value
+            const litros_anual = Number(input_anual.value)
+            const preço_medio = Number(input_preço_medio.value)
+            const valor_ano = (litros_anual * preço_medio) 
+            var novo_valor_ano = valor_ano / 0.9
+            var diferença = novo_valor_ano - valor_ano
+
+            // PRIMEIRA LINHA DE RACIOCINO 
+            //var litros_anual_novo = litros_anual / 0.9    
+            // var preço_medio_novo = litros_anual_novo * preço_medio  // novo valor que irá receber anual
+
+            //diferença que irá ter 
+            //var diferença = preço_medio_novo - 
             
-            const tonel = Number(input_toneis.value)
-            const medidorTemperatura = Number(input_medidor_temp.value)
-            const medidorAlcool = Number(input_medidor_alc.value)
-
-            var vlrTemp = Number(input_medidor_temp.value) * 700
-            var vlrAlc = Number(input_medidor_alc.value) * 25000
-            const custoAtual = vlrTemp + vlrAlc
-
-            const vlrSensorGas = 18
-            const vlrSensorTemp = 20
-
-            var novoVlrTemp = tonel * vlrSensorTemp
-            var novoVlrAlc = tonel * vlrSensorGas
-
-            var novoValorTotal = novoVlrAlc + novoVlrTemp
-            var lucro = custoAtual - novoValorTotal
 
             div_resultado.innerHTML= 
 
-            `<br>O seu custo no momento  com sensores de medição de alcool é de R$${vlrAlc}.
-            <br>Você também tem o custo de R$${vlrTemp} com medidores de  temperatura.
-            <br>Ao todo você gasta R$${custoAtual} apenas com medidores.
-            <br>
-            <br> Conosco você pode gasta apenas R$${novoVlrTemp} com medidores de temperatura e R$${novoVlrAlc} com sensores de Alcool
-            <br> Sua empresa irá deixar de gastar R$${lucro}
-            <br>
-            <br>
-            <br> Entre em contato conosco para fazermos uma visita.
-            <br> E-mail: grupo12vinho@vinhos.com` 
+            `O nome da empresa é ${nome} ela vende ${litros_anual} litros de vinho por ano no preço médio de ${preço_medio} no total por ano ela vende${valor_ano}
+            <br> com o nosso sistema irá reduzir as perdas e irá vender no ano ${novo_valor_ano} com um lucro de ${diferença}` 
 
 
-            
-
-            
-
-
-
-
-
-
+            // PRECISO APENAS ARRUMAR A MENSAGEM DA RESPOSTA
 
 }
 
