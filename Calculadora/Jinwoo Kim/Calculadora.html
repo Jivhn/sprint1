@@ -40,12 +40,21 @@
         var prejuizo = rendimentoAnual - diferencaRendimento
 
         vamoLa.innerHTML = 
-        `Puxa vida! De R$${Math.ceil(rendimentoAnual)} que deveria estar rendendo anualmente, 
-        <br>
-        sua vinícola está rendendo R$${Math.ceil(diferencaRendimento)}.. 
-        <br>
-        Prejuízo de R$${Math.ceil(prejuizo)}.
+        `Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
+        devido a desvios que surgem durante a fermentação alcoólica ou a fermentação malolática.
+        <br> 
+        Isso significa que, para uma vinícola, 5 a 10% de sua produção não será vendida ao preço ideal.
+
         <br><br>
-        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de R$${Math.ceil(prejuizo)}!!`
+
+        De <b>R$${Math.ceil(rendimentoAnual)}</b> que deveria estar rendendo anualmente, 
+        <br>
+        sua vinícola está rendendo <b>R$${Math.ceil(diferencaRendimento)}</b>...
+        <br>
+        Prejuízo de <b>R$${Math.ceil(prejuizo)}</b>.
+        <br><br>
+        Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso!
+        <br><br>
+        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de <b>R$${Math.ceil(prejuizo)}</b>!!`
     }
 </script>
