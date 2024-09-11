@@ -33,16 +33,48 @@ setor VARCHAR(20) NOT NULL,
 );
 
 INSERT INTO CadFunc VALUES
-(default, 'Ana Silva', 'ana.silva@empresa.com', '12345678000195', 'Marketing'),
-(default, 'Carlos Pereira', 'carlos.pereira@empresa.com', '98765432000156', 'Logistica'),
-(default, 'Maria Souza', 'maria.souza@empresa.com', '11223344000167', 'Financeiro');
+(default, 'Vinicius Gonçalves', 'vinicius@sptech.school', '0123456789', 'Marketing'),
+(default, 'Lucas Aiello', 'Lucas@sptech.school', '9874561230', 'Logistica'),
+(default, 'Gabriel Souza', 'Gabriel@sptech.school', '1122334455', 'Financeiro');
 
-CREATE TABLE tonel(
-idTonel INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE sensorLM35(
+idSensorLM35 INT PRIMARY KEY AUTO_INCREMENT,
+valor FLOAT,
+datahora DATETIME
+);
+
+INSERT INTO sensorLM35 VALUES
+(1, 23.5, now()),
+(2, 25.7, now()),
+(3, 24.2, now()),
+(1, 25.4, now()),
+(2, 24.3, now()),
+(3, 21.2, now());
+
+CREATE TABLE sensorMQ2(
+idSensorMQ2 INT PRIMARY KEY AUTO_INCREMENT,
+valor FLOAT,
+datahora DATETIME
+);
+
+INSERT INTO sensorMQ2 VALUES
+(1, 28, now()),
+(2, 23.5, now()),
+(3, 33.6, now()),
+(1, 27.3, now()),
+(2, 24.5, now()),
+(3, 31.8, now());
+
+CREATE TABLE Consulta(
+idTonel INT PRIMARY KEY,
 idEmpresa INT,
-idMicrocontrolador INT,
 idLM35 INT,
 idMQ2 INT,
-dataHora INT,
-valor DATETIME
+valor FLOAT,
+dataHora DATETIME
 );
+
+INSERT INTO Consulta VALUES
+(1, 'Vinhos Aurora SA', 1, 1, 25.3, now ()),
+(6, 'Casa Valduga Ltda', 2, 2, 25.3, now ()),
+(12, 'Miolo Wine Group', 3, 3, 25.3, now ());
