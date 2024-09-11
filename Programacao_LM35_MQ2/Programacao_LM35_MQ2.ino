@@ -6,7 +6,6 @@ const int max = 1000; // Valores para conversão das informações do MQ2
 float valor_MQ2 = 0; // Variável onde iremos atribuir as informações vindas do sensor de Gás
 float valor_LM35 = 0; // Variável onde iremos atribuir as informações vindas do sensor de Temperatura
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void setup() {
   Serial.begin(9600); // Iniciando o Monitor Serial
@@ -24,7 +23,7 @@ void loop() {
 
   // Verificando se o sensor MQ2 está funcionando corretamente
   if (porcentagem_gas < 0) {
-    porcentagem_gas = 0;+
+    porcentagem_gas = 0;
   } else if (porcentagem_gas > 100) {
     porcentagem_gas = 100;
   }
@@ -34,7 +33,6 @@ void loop() {
     temperaturaCelsius = 0;
   }
 
----------------------------------------------------------------------------------------------------------------------
 
   // Exibindo valores no Monitor Serial
 
