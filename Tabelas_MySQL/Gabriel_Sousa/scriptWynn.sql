@@ -1,14 +1,6 @@
 CREATE DATABASE dbWynn;
 USE dbWynn;
 
-TRUNCATE TABLE tbMedidaSensor;
-TRUNCATE TABLE tbSensor;
-TRUNCATE TABLE tbControleTonel;
-TRUNCATE TABLE tbFuncionarioEmpresa;
-TRUNCATE TABLE tbMicroControlador;
-TRUNCATE TABLE tbEmpresa;
-
-
 
 CREATE TABLE tbEmpresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -38,29 +30,34 @@ CREATE TABLE tbFuncionarioEmpresa (
 idFuncionarioEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nomeFuncionarioEmpresa VARCHAR (100) NOT NULL,
 idEmpresa INT NOT NULL,
+dataNascFuncionarioEmpresa DATE,
 foneFuncionarioEmpresa VARCHAR (14),
 emailFuncionarioEmpresa VARCHAR (70) NOT NULL,
 senhaFuncionarioEmpresa VARCHAR(45) NOT NULL,
 cargoFuncionarioEmpresa VARCHAR (45)
 );
 
-INSERT INTO tbFuncionarioEmpresa (nomeFuncionarioEmpresa, idEmpresa, foneFuncionarioEmpresa, emailfuncionarioEmpresa, senhafuncionarioEmpresa, cargofuncionarioEmpresa) 
+
+INSERT INTO tbFuncionarioEmpresa (nomeFuncionarioEmpresa, idEmpresa, dataNascFuncionarioEmpresa, foneFuncionarioEmpresa, emailFuncionarioEmpresa, senhaFuncionarioEmpresa, cargoFuncionarioEmpresa) 
 VALUES 
-('Macari Marcelino', 1, '11956789012', 'macari.marcelino@gmail.com', '1234', 'Gerente'), 
-('Lucas Aielo', 2, '11988776655', 'lucas.aielo@gmail.com', '1234', 'Enólogo'), 
-('Gabriel Sousa', 1, '11922334455', 'gabriel.sousa@gmail.com', '1234', 'Enólogo'), 
-('Ana Paula', 1, '11933445566', 'ana.paula@gmail.com', '1234', 'Vendedora'), 
-('Carlos Lima', 1, '11999887766', 'carlos.lima@gmail.com', '1234', 'Assistente de Produção'), 
-('Fernanda Santos', 1, '11977665544', 'fernanda.santos@gmail.com', '1234', 'Assistente Administrativa'), 
-('João Pereira', 2, '11956543211', 'joao.pereira@gmail.com', '1234', 'Vendedor'), 
-('Renata Figueira', 2, '11933442255', 'renata.figueira@gmail.com', '1234', 'Assistente Administrativa'), 
-('Patrícia Costa', 2, '11944556677', 'patricia.costa@gmail.com', '1234', 'Auxiliar de Produção'), 
-('Marcelo Dias', 3, '11966554433', 'marcelo.dias@gmail.com', '1234', 'Gerente'), 
-('Cláudia Medeiros', 3, '11977889900', 'claudia.medeiros@gmail.com', '1234', 'Vendedora'), 
-('Rodrigo Alves', 3, '11988990011', 'rodrigo.alves@gmail.com', '1234', 'Enólogo'), 
-('Mariana Martins', 4, '11933445577', 'mariana.martins@gmail.com', '1234', 'Assistente Administrativa'), 
-('Eduardo Oliveira', 4, '11999887788', 'eduardo.oliveira@gmail.com', '1234', 'Auxiliar de Produção'), 
-('Sofia Barros', 4, '11977665511', 'sofia.barros@gmail.com', '1234', 'Auxiliar de Produção');
+('Macari Marcelino', 1, '1985-05-15', '11956789012', 'macari.marcelino@gmail.com', '1234', 'Gerente'), 
+('Lucas Aielo', 2, '1990-07-22', '11988776655', 'lucas.aielo@gmail.com', '1234', 'Enólogo'), 
+('Gabriel Sousa', 1, '1992-10-09', '11922334455', 'gabriel.sousa@gmail.com', '1234', 'Enólogo'), 
+('Ana Paula', 1, '1988-12-01', '11933445566', 'ana.paula@gmail.com', '1234', 'Vendedora'), 
+('Carlos Lima', 1, '1991-03-16', '11999887766', 'carlos.lima@gmail.com', '1234', 'Assistente de Produção'), 
+('Fernanda Santos', 1, '1989-11-30', '11977665544', 'fernanda.santos@gmail.com', '1234', 'Assistente Administrativa'), 
+('João Pereira', 2, '1986-08-14', '11956543211', 'joao.pereira@gmail.com', '1234', 'Vendedor'), 
+('Renata Figueira', 2, '1993-09-18', '11933442255', 'renata.figueira@gmail.com', '1234', 'Assistente Administrativa'), 
+('Patrícia Costa', 2, '1994-02-20', '11944556677', 'patricia.costa@gmail.com', '1234', 'Auxiliar de Produção'), 
+('Marcelo Dias', 3, '1984-06-25', '11966554433', 'marcelo.dias@gmail.com', '1234', 'Gerente'), 
+('Cláudia Medeiros', 3, '1987-04-10', '11977889900', 'claudia.medeiros@gmail.com', '1234', 'Vendedora'), 
+('Rodrigo Alves', 3, '1992-01-12', '11988990011', 'rodrigo.alves@gmail.com', '1234', 'Enólogo'), 
+('Mariana Martins', 4, '1985-11-23', '11933445577', 'mariana.martins@gmail.com', '1234', 'Assistente Administrativa'), 
+('Eduardo Oliveira', 4, '1990-07-08', '11999887788', 'eduardo.oliveira@gmail.com', '1234', 'Auxiliar de Produção'), 
+('Sofia Barros', 4, '1992-10-29', '11977665511', 'sofia.barros@gmail.com', '1234', 'Auxiliar de Produção'),
+('Fernanda Lima', 5, '1991-05-17', '11999998888', 'fernanda.lima@gmail.com', '1234', 'Gerente de Projeto'), 
+('Carlos Oliveira', 5, '1988-12-03', '11988887777', 'carlos.oliveira@gmail.com', '1234', 'Analista de Sistemas'), 
+('Juliana Santos', 5, '1995-03-21', '11977776666', 'juliana.santos@gmail.com', '1234', 'Designer Gráfico');
 
 
 CREATE TABLE tbMicroControlador (
@@ -198,8 +195,10 @@ SELECT CONCAT('O sensor ', idSensor,' ' ,tipoSensor, ', pretence ao tonél ', id
 SELECT CONCAT('O Tonél ', idControleTonel, ' pertence a empresa ',idEmpresa, ', esá utilizando o micro controlador ', idMicroControlador, '. Volume de gás: ', medidaTotalMQ2, 'PPM', ' Temperatura: ', medidaTotalLM35, '°') AS 'Informações dos tonéis' FROM tbControleTonel;
 
 
+SELECT CONCAT ('O funcionário ', nomeFuncionarioEmpresa, ', trabalha na empresa ', idEmpresa, ' com o cargo registrado de ', cargofuncionarioEmpresa) FROM tbfuncionarioempresa;
 
 
+SELECT CONCAT( 'O Funcionario(a) ',nomeFuncionarioEmpresa, ' tem ', timestampdiff(YEAR, dataNascFuncionarioEmpresa, now()),' anos, e trabalha na empresa ', idEmpresa,' de ' ,cargoFuncionarioEmpresa) AS 'Apresentação dos funcionários das empresas' FROM tbFuncionarioEmpresa; 
 
 
 
