@@ -41,20 +41,20 @@
 
         vamoLa.innerHTML = 
         `Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
-        devido a desvios que surgem durante a fermentação alcoólica ou a fermentação malolática.
+        devido a desvios que surgem durante a fermentação alcoólica.
         <br> 
         Isso significa que, para uma vinícola, 5 a 10% de sua produção não será vendida ao preço ideal.
 
         <br><br>
 
-        De <b>R$${Math.ceil(rendimentoAnual)}</b> que deveria estar rendendo anualmente, 
+        De <b>${rendimentoAnual.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> que deveria estar rendendo anualmente, 
         <br>
-        sua vinícola está rendendo <b>R$${Math.ceil(diferencaRendimento)}</b>...
+        sua vinícola está rendendo <b>${diferencaRendimento.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b> ...
         <br>
-        Prejuízo de <b>R$${Math.ceil(prejuizo)}</b>.
+        Prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>.
         <br><br>
         Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso!
         <br><br>
-        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de <b>R$${Math.ceil(prejuizo)}</b>!!`
+        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>!!`
     }
 </script>
