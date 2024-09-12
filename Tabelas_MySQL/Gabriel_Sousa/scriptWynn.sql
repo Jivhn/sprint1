@@ -22,8 +22,8 @@ VALUES
 ('Vinícola Campestre', '98.521.909/0002-70', 'vinicolaCampestre@gmail.com', '114940028922', '95205000', 'BR-116 KM 30', 'Bairro Passo da Porteira', 'Vacaria', 'RS', '1410', default), 
 ('Vinícola Abreu Garcia', '10.327.131/0001-31', 'abreuGarcia@gmail.com', '114988888888', '88580000', 'Fazenda Nova Dela Costa', 'Alto Travessão', 'Campo Belo do Sul', 'SC', default, 'Sem número'), 
 ('Vinícola Aurora', '88.777.134/0001-19', 'auroraVinhos@gmail.com', '114972222222', '95700000', 'Rua Olavo Bilac', 'Centro', 'Bento Gonçalves', 'RS', '500', default), 
-('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@gmail.com', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
-('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@gmail.com', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
+('Vinícola Salton', '88.110.431/0001-02', 'saltonVinhos@outlook.com', '114977777777', '95180000', 'Estrada Salton', 'Tuiuty', 'Bento Gonçalves', 'RS', '1500', default), 
+('Vinícola Miolo', '89.627.234/0001-56', 'mioloVinhos@outlook.com', '114966666666', '95700000', 'RS-444 KM 21', 'Vale dos Vinhedos', 'Bento Gonçalves', 'RS', default, 'Sem número');
 
 
 CREATE TABLE tbFuncionarioEmpresa (
@@ -200,6 +200,11 @@ SELECT CONCAT ('O funcionário ', nomeFuncionarioEmpresa, ', trabalha na empresa
 
 SELECT CONCAT( 'O Funcionario(a) ',nomeFuncionarioEmpresa, ' tem ', timestampdiff(YEAR, dataNascFuncionarioEmpresa, now()),' anos, e trabalha na empresa ', idEmpresa,' de ' ,cargoFuncionarioEmpresa) AS 'Apresentação dos funcionários das empresas' FROM tbFuncionarioEmpresa; 
 
+SELECT * FROM tbEmpresa WHERE ufLogradouroEmpresa = 'RS';
+SELECT * FROM tbEmpresa WHERE ufLogradouroEmpresa = 'SC';
+SELECT * FROM tbEmpresa WHERE nomeEmpresa LIKE '%a';
+SELECT * FROM tbEmpresa WHERE emailEmpresa LIKE '%gmail%';
+SELECT * FROM tbEmpresa WHERE emailEmpresa LIKE '%outlook%';
+SELECT CASE WHEN medidaTotalLM35>=30 THEN CONCAT('O tonél ', idControleTonel, ' não está com a temperatura adequada: ', medidaTotalLM35, '°') END AS 'Monitoramento de temperatura' FROM tbControleTonel;
 
-
-
+SELECT CASE WHEN medidaTotalMQ2>=50 THEN CONCAT('O tonél ', idControleTonel, ' não está com o volume de gás adequado: ', medidaTotalMQ2, 'PPM') END AS 'Monitoramento de Gás' FROM tbControleTonel;
