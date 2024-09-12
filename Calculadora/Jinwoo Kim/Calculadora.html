@@ -38,9 +38,11 @@
         var desperdicioAnual = d / 0.75 * pr 
         var diferencaRendimento = rendimentoAnual - desperdicioAnual
         var prejuizo = rendimentoAnual - diferencaRendimento
+        var pctPrejuizo = prejuizo * 0.97
 
         vamoLa.innerHTML = 
         `Com base nos estudos da Chr. Hansen, 5 a 10% da produção de vinho perdem seu valor todos os anos, 
+        <br>
         devido a desvios que surgem durante a fermentação alcoólica.
         <br> 
         Isso significa que, para uma vinícola, 5 a 10% de sua produção não será vendida ao preço ideal.
@@ -53,8 +55,12 @@
         <br>
         Prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>.
         <br><br>
-        Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação, te poupando de perdas e colocando dinheiro no seu bolso!
+        Com um sistema de monitoramento de temperatura e gases, permitirá um maior controle no processo de fermentação,
+        <br>
+        te poupando de perdas e colocando dinheiro no seu bolso!
         <br><br>
-        Usando o nosso projeto você conseguirá salvar todo o seu prejuízo de <b>${prejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>!!`
+        Usando o nosso projeto você conseguirá salvar o seu prejuízo em até <b>${pctPrejuizo.toLocaleString("pt-BR",{style: 'currency', currency: 'BRL'})}</b>, 
+        <br>
+        que seria aproximadamente 97% do total do prejuízo!!`
     }
 </script>
